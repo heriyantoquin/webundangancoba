@@ -1,0 +1,974 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Undangan pernikahan digital premium dengan generator data, tema warna, dan font yang dapat dikustom.">
+  <title>Undangan Pernikahan Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #d6b482;
+      --accent: #6b705c;
+      --bg: #f8f5f0;
+      --text: #2f2f2f;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Poppins', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3, h4 { font-family: var(--font-heading); margin: 0 0 12px; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button {
+      cursor: pointer;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    button:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), #e5c9a6); color: #2f2f2f; }
+    .btn-ghost { background: rgba(255,255,255,0.85); color: #2f2f2f; border: 1px solid rgba(0,0,0,0.05); }
+    .chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 999px; background: rgba(0,0,0,0.04); font-size: 13px; }
+    .section { padding: 64px 18px; position: relative; overflow: hidden; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+    .grid { display: grid; gap: 18px; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.7), transparent 35%), radial-gradient(circle at 80% 0%, rgba(214,180,130,0.25), transparent 35%), linear-gradient(180deg, #fdfbf7, #f6efe6);
+      padding: 80px 18px 60px;
+    }
+    .hero-card {
+      max-width: 860px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 28px;
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(214,180,130,0.15), rgba(255,255,255,0));
+      pointer-events: none;
+    }
+    .hero-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 16px;
+      border: 6px solid #fff;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+    .divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      margin: 18px auto;
+    }
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(var(--primary), rgba(214,180,130,0.2));
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 18px;
+      padding-left: 16px;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--primary);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+    .tag { font-size: 12px; letter-spacing: 0.3px; text-transform: uppercase; color: #6b6b6b; }
+    .pill { display: inline-flex; padding: 6px 10px; border-radius: 10px; background: rgba(0,0,0,0.04); font-size: 13px; }
+    .gallery { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+    .gallery img {
+      border-radius: 14px;
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .gallery img:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .count-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+    .count-box strong { font-size: 28px; display: block; }
+    .rsvp-list { display: grid; gap: 12px; margin-top: 12px; }
+    .rsvp-item {
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.04);
+      animation: fadeIn 0.45s ease forwards;
+    }
+    .floating-panel {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+    }
+    .panel {
+      width: min(440px, calc(100vw - 24px));
+      max-height: 82vh;
+      overflow: auto;
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .panel label { display: block; font-size: 13px; margin-bottom: 6px; color: #444; }
+    .panel input, .panel textarea, .panel select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.1);
+      font-family: var(--font-body);
+      background: rgba(0,0,0,0.02);
+    }
+    .panel textarea { min-height: 70px; }
+    .panel .inline { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .music-toggle { 
+      position: fixed; 
+      left: 18px; 
+      bottom: 18px; 
+      z-index: 20; 
+    }
+    .music-toggle button {
+      padding: 10px 16px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .music-toggle button .icon {
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    #bgMusic {
+      display: none;
+    }
+    .badge { background: rgba(214,180,130,0.18); color: #6b4c2f; padding: 6px 10px; border-radius: 10px; font-size: 13px; }
+    .anim { opacity: 0; transform: translateY(10px); transition: all 0.6s ease; }
+    .anim.show { opacity: 1; transform: translateY(0); }
+    .footer { text-align: center; padding: 32px 18px 46px; color: #6b6b6b; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .section { padding: 40px 16px; }
+      .hero { padding: 60px 16px 40px; min-height: 100vh; }
+      .hero-card { padding: 24px 18px; border-radius: 20px; }
+      .hero-img { width: 120px; height: 120px; border-width: 4px; }
+      h1 { font-size: clamp(24px, 8vw, 36px) !important; }
+      h2 { font-size: clamp(20px, 6vw, 28px) !important; }
+      h3 { font-size: clamp(18px, 5vw, 24px) !important; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .countdown { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .count-box { padding: 12px 8px; }
+      .count-box strong { font-size: 24px; }
+      .gallery { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .gallery img { height: 140px; border-radius: 12px; }
+      .card { padding: 18px; border-radius: 16px; }
+      button { padding: 10px 16px; font-size: 14px; }
+      .panel { 
+        width: calc(100vw - 32px); 
+        max-height: 85vh; 
+        padding: 16px; 
+        right: 16px; 
+        bottom: 80px;
+      }
+      .floating-panel { right: 16px; bottom: 16px; gap: 10px; }
+      .music-toggle { left: 16px; bottom: 16px; }
+      .music-toggle button { 
+        padding: 8px 12px; 
+        font-size: 12px; 
+        min-width: auto;
+      }
+      .music-toggle button .icon { font-size: 14px; }
+      .music-toggle button #musicText { display: none; }
+      .timeline { padding-left: 20px; }
+      .timeline-item { padding-left: 14px; margin-bottom: 16px; }
+      .rsvp-item { padding: 10px 12px; font-size: 14px; }
+      .divider { width: 80px; margin: 14px auto; }
+      .chip { font-size: 12px; padding: 6px 10px; }
+      .tag { font-size: 11px; }
+      .pill { font-size: 12px; padding: 5px 8px; }
+      .footer { padding: 24px 16px 36px; font-size: 14px; }
+      p { font-size: 15px; }
+    }
+    
+    @media (max-width: 480px) {
+      .section { padding: 32px 12px; }
+      .hero { padding: 50px 12px 32px; }
+      .hero-card { padding: 20px 16px; }
+      .hero-img { width: 100px; height: 100px; }
+      .countdown { grid-template-columns: repeat(2, 1fr); }
+      .count-box strong { font-size: 20px; }
+      .gallery img { height: 120px; }
+      .panel { 
+        width: calc(100vw - 24px); 
+        max-height: 90vh;
+        padding: 14px;
+        right: 12px;
+        bottom: 70px;
+      }
+      .floating-panel { right: 12px; bottom: 12px; }
+      .music-toggle { left: 12px; bottom: 12px; }
+      .music-toggle button { 
+        padding: 10px; 
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        justify-content: center;
+      }
+      .music-toggle button .icon { font-size: 18px; }
+      .panel input, .panel textarea, .panel select { font-size: 14px; padding: 8px 10px; }
+      .panel .inline { grid-template-columns: 1fr; }
+      p { font-size: 14px; }
+    }
+    
+    /* Landscape mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero { min-height: auto; padding: 40px 16px; }
+      .panel { max-height: 70vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero" id="cover">
+    <div class="hero-card anim">
+      <div class="badge">The Wedding Of</div>
+      <img id="heroPhoto" class="hero-img" src="https://images.unsplash.com/photo-1520854221050-0f4caff449fb?auto=format&fit=crop&w=600&q=80" alt="Foto Mempelai">
+      <h1 id="coupleName" style="font-size: clamp(28px, 6vw, 42px);">Raka &amp; Dara</h1>
+      <div class="divider"></div>
+      <p id="weddingDateText" style="font-size: 16px; letter-spacing: 0.4px;">Sabtu, 12 April 2026</p>
+      <p id="heroQuote" style="max-width: 640px; margin: 0 auto 18px; color: #555;">“Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup supaya kamu mendapat ketenangan hati.”</p>
+      <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+        <a class="btn-primary" href="#detail" style="width: 100%; max-width: 280px; text-align: center;">Buka Undangan</a>
+        <button class="btn-ghost" id="openGenerator" style="width: 100%; max-width: 280px;">Panel Generator</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="mempelai">
+    <div class="container grid grid-2">
+      <div class="card anim">
+        <div class="chip">Mempelai Pria</div>
+        <img id="groomPhoto" class="hero-img" style="width: 120px; height: 120px;" src="https://images.unsplash.com/photo-1529669851596-ba9a5540ee68?auto=format&fit=crop&w=600&q=80" alt="Mempelai pria">
+        <h2 id="groomName">Raka Pradana</h2>
+        <p id="groomParents">Putra dari Bapak Wira &amp; Ibu Hana</p>
+      </div>
+      <div class="card anim">
+        <div class="chip">Mempelai Wanita</div>
+        <img id="bridePhoto" class="hero-img" style="width: 120px; height: 120px;" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Mempelai wanita">
+        <h2 id="brideName">Dara Anindya</h2>
+        <p id="brideParents">Putri dari Bapak Rudi &amp; Ibu Sari</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="detail">
+    <div class="container">
+      <div class="card anim">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <p class="tag">Detail Acara</p>
+            <h2>Pisahkan jelas antara Akad &amp; Resepsi</h2>
+          </div>
+          <div class="pill">Soft icon &amp; clean layout</div>
+        </div>
+        <div class="grid grid-2" style="margin-top: 12px;">
+          <div class="card anim" style="background: linear-gradient(180deg,#fff,rgba(214,180,130,0.08));">
+            <div class="chip">Akad Nikah</div>
+            <h3 id="akadDate">Sabtu, 12 April 2026</h3>
+            <p id="akadTime">Pukul 09:00 WIB</p>
+            <p id="akadLocation">Masjid Al-Ikhlas, Jakarta</p>
+            <button class="btn-primary" id="akadMapBtn">Lihat di Google Maps</button>
+          </div>
+          <div class="card anim" style="background: linear-gradient(180deg,#fff,rgba(107,112,92,0.06));">
+            <div class="chip">Resepsi</div>
+            <h3 id="resepsiDate">Sabtu, 12 April 2026</h3>
+            <p id="resepsiTime">Pukul 11:00 - 14:00 WIB</p>
+            <p id="resepsiLocation">The Manor Ballroom, Jakarta</p>
+            <button class="btn-primary" id="resepsiMapBtn">Lihat di Google Maps</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="countdown">
+    <div class="container card anim">
+      <p class="tag">Menuju Hari Bahagia</p>
+      <h2>Hitung Mundur Pernikahan</h2>
+      <p style="color:#555;">Countdown real-time yang otomatis berhenti di hari H.</p>
+      <div class="countdown" id="countdownTimer">
+        <div class="count-box"><strong id="days">0</strong><span>Hari</span></div>
+        <div class="count-box"><strong id="hours">0</strong><span>Jam</span></div>
+        <div class="count-box"><strong id="minutes">0</strong><span>Menit</span></div>
+        <div class="count-box"><strong id="seconds">0</strong><span>Detik</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gallery">
+    <div class="container card anim">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+        <div>
+          <p class="tag">Galeri Foto</p>
+          <h2>Grid modern dengan lazy load</h2>
+        </div>
+        <div class="pill">6 - 12 foto · animasi ringan</div>
+      </div>
+      <div class="gallery" id="galleryGrid" style="margin-top:14px;"></div>
+    </div>
+  </section>
+
+  <section class="section" id="love-story">
+    <div class="container card anim">
+      <p class="tag">Cerita Cinta</p>
+      <h2>Timeline sederhana</h2>
+      <div class="timeline" id="storyTimeline"></div>
+    </div>
+  </section>
+
+  <section class="section" id="rsvp">
+    <div class="container grid grid-2">
+      <div class="card anim">
+        <p class="tag">RSVP &amp; Buku Tamu</p>
+        <h2>Konfirmasi Kehadiran</h2>
+        <form id="rsvpForm">
+          <label>Nama</label>
+          <input id="inputName" required placeholder="Nama lengkap">
+          <label style="margin-top:10px;">Kehadiran</label>
+          <select id="inputAttend" required>
+            <option value="">Pilih</option>
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+          </select>
+          <label style="margin-top:10px;">Jumlah tamu</label>
+          <input id="inputGuests" type="number" min="1" value="1" required>
+          <label style="margin-top:10px;">Pesan &amp; doa</label>
+          <textarea id="inputMessage" placeholder="Ucapan untuk mempelai"></textarea>
+          <button class="btn-primary" type="submit" style="margin-top:12px;">Kirim</button>
+          <p style="font-size:12px; color:#666; margin-top:6px;">Data dapat diarahkan ke Google Sheet / API dengan mudah.</p>
+        </form>
+      </div>
+      <div class="card anim">
+        <p class="tag">Ucapan Terkini</p>
+        <div id="rsvpList" class="rsvp-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="amplop">
+    <div class="container card anim">
+      <p class="tag">Amplop Digital</p>
+      <h2>Dukungan dalam doa &amp; hadiah</h2>
+      <div class="grid grid-3">
+        <div>
+          <p class="pill" style="background: rgba(214,180,130,0.16);">Rekening</p>
+          <p id="bankInfo">BCA • 1234567890 • a.n. Raka Pradana</p>
+          <button class="btn-ghost" id="copyBank">Copy nomor</button>
+        </div>
+        <div>
+          <p class="pill" style="background: rgba(107,112,92,0.12);">E-Wallet</p>
+          <p id="ewalletInfo">Gopay • 0812-1234-5678</p>
+          <button class="btn-ghost" id="copyEwallet">Copy nomor</button>
+        </div>
+        <div>
+          <p class="pill" style="background: rgba(0,0,0,0.06);">Etika</p>
+          <p style="font-size:14px; color:#555;">Kehadiran & doa sudah merupakan hadiah terbaik. Terima kasih atas perhatian hangat Anda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="doa">
+    <div class="container card anim">
+      <p class="tag">Doa &amp; Ucapan</p>
+      <h2>Terima kasih atas doa baik</h2>
+      <div id="messageList" class="rsvp-list"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="divider"></div>
+    <p id="footerThanks">Terima kasih atas doa dan kehadiran Anda.</p>
+    <p id="footerNames" style="font-weight:600;">Raka &amp; Dara</p>
+    <p id="footerYear">2026</p>
+    <p style="font-size:12px; color:#888;">Design by Elegant Invite</p>
+  </footer>
+
+  <div class="floating-panel">
+    <div class="panel" id="generatorPanel" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+        <h3 style="margin:0;">Generator Data</h3>
+        <button id="closeGenerator" class="btn-ghost" style="padding:8px 12px;">Tutup</button>
+      </div>
+      <p style="margin:6px 0 12px; color:#555; font-size:13px;">Isi data, ubah tema & font, lalu bagikan link unik.</p>
+      <div class="inline">
+        <div>
+          <label>Nama Mempelai Pria</label>
+          <input id="formGroom" placeholder="Raka Pradana">
+        </div>
+        <div>
+          <label>Nama Mempelai Wanita</label>
+          <input id="formBride" placeholder="Dara Anindya">
+        </div>
+      </div>
+      <label style="margin-top:10px;">Tanggal Pernikahan</label>
+      <input id="formDate" type="date">
+      <label style="margin-top:10px;">Foto Hero (URL)</label>
+      <input id="formHeroPhoto" placeholder="https://...">
+      <label style="margin-top:10px;">Kutipan / Ayat</label>
+      <textarea id="formQuote" placeholder="Masukkan kutipan"></textarea>
+      <div class="inline" style="margin-top:10px;">
+        <div>
+          <label>Akad - Hari & Tanggal</label>
+          <input id="formAkadDate" placeholder="Sabtu, 12 April 2026">
+        </div>
+        <div>
+          <label>Akad - Waktu</label>
+          <input id="formAkadTime" placeholder="09:00 WIB">
+        </div>
+      </div>
+      <label style="margin-top:10px;">Lokasi Akad</label>
+      <input id="formAkadLocation" placeholder="Masjid ...">
+      <label style="margin-top:10px;">Link Google Maps Akad</label>
+      <input id="formAkadMap" placeholder="https://maps.google.com/...">
+      <div class="inline" style="margin-top:10px;">
+        <div>
+          <label>Resepsi - Hari & Tanggal</label>
+          <input id="formResepsiDate" placeholder="Sabtu, 12 April 2026">
+        </div>
+        <div>
+          <label>Resepsi - Waktu</label>
+          <input id="formResepsiTime" placeholder="11:00 - 14:00 WIB">
+        </div>
+      </div>
+      <label style="margin-top:10px;">Lokasi Resepsi</label>
+      <input id="formResepsiLocation" placeholder="The Manor Ballroom">
+      <label style="margin-top:10px;">Link Google Maps Resepsi</label>
+      <input id="formResepsiMap" placeholder="https://maps.google.com/...">
+      <label style="margin-top:10px;">Galeri (pisahkan dengan koma)</label>
+      <textarea id="formGallery" placeholder="https://foto1.jpg, https://foto2.jpg"></textarea>
+      <label style="margin-top:10px;">Timeline (format: judul|deskripsi, pisahkan baris)</label>
+      <textarea id="formTimeline" placeholder="Pertemuan pertama|Tempat dan tahun...&#10;Lamaran|Tanggal...&#10;Menuju Pernikahan|..."></textarea>
+      <div class="inline" style="margin-top:10px;">
+        <div>
+          <label>Warna Utama</label>
+          <input id="formPrimary" type="color" value="#d6b482">
+        </div>
+        <div>
+          <label>Warna Aksen</label>
+          <input id="formAccent" type="color" value="#6b705c">
+        </div>
+      </div>
+      <div class="inline" style="margin-top:10px;">
+        <div>
+          <label>Font Heading</label>
+          <select id="formFontHeading">
+            <option value="'Playfair Display', serif">Playfair</option>
+            <option value="'Lora', serif">Lora</option>
+          </select>
+        </div>
+        <div>
+          <label>Font Body</label>
+          <select id="formFontBody">
+            <option value="'Poppins', sans-serif">Poppins</option>
+            <option value="'Lora', serif">Lora</option>
+          </select>
+        </div>
+      </div>
+      <label style="margin-top:10px;">Info Rekening</label>
+      <input id="formBank" placeholder="BCA • 1234567890 • a.n. ...">
+      <label style="margin-top:10px;">Info E-Wallet</label>
+      <input id="formEwallet" placeholder="Gopay • 08xx">
+      <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+        <button class="btn-primary" id="btnPreview" type="button">Preview</button>
+        <button class="btn-ghost" id="btnGenerate" type="button">Generate Link Unik</button>
+      </div>
+      <label style="margin-top:10px;">Link hasil generate</label>
+      <input id="formGeneratedLink" readonly>
+      <button class="btn-ghost" id="btnCopyLink" type="button" style="margin-top:8px;">Copy Link</button>
+    </div>
+    <button class="btn-primary" id="togglePanel">Generator</button>
+  </div>
+
+  <div class="music-toggle">
+    <button class="btn-ghost" id="btnMusic">
+      <span class="icon" id="musicIcon">🔊</span>
+      <span id="musicText">Musik</span>
+    </button>
+    <audio id="bgMusic" loop preload="auto">
+      <source src="https://cdn.pixabay.com/download/audio/2022/10/19/audio_420b7d65f8.mp3?filename=romantic-piano-ambient-124200.mp3" type="audio/mpeg">
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <script>
+    const GOOGLE_SCRIPT_URL = ""; // isi jika ingin simpan ke Google Apps Script
+
+    const defaults = {
+      groom: "Raka Pradana",
+      bride: "Dara Anindya",
+      weddingDate: "2026-04-12",
+      heroPhoto: "https://images.unsplash.com/photo-1520854221050-0f4caff449fb?auto=format&fit=crop&w=600&q=80",
+      groomPhoto: "https://images.unsplash.com/photo-1529669851596-ba9a5540ee68?auto=format&fit=crop&w=600&q=80",
+      bridePhoto: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
+      quote: "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup supaya kamu mendapat ketenangan hati.",
+      akad: { date: "Sabtu, 12 April 2026", time: "09:00 WIB", location: "Masjid Al-Ikhlas, Jakarta", map: "https://maps.google.com" },
+      resepsi: { date: "Sabtu, 12 April 2026", time: "11:00 - 14:00 WIB", location: "The Manor Ballroom, Jakarta", map: "https://maps.google.com" },
+      gallery: [
+        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80&sat=-20",
+        "https://images.unsplash.com/photo-1520854221050-0f4caff449fb?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1520854221050-0f4caff449fb?auto=format&fit=crop&w=800&q=80&sat=-30",
+        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80"
+      ],
+      timeline: [
+        { title: "Pertemuan Pertama", desc: "Bertemu di kampus, 2018." },
+        { title: "Lamaran", desc: "Keluarga berkumpul, 1 Januari 2026." },
+        { title: "Menuju Pernikahan", desc: "Mempersiapkan hari bahagia bersama." }
+      ],
+      bank: "BCA • 1234567890 • a.n. Raka Pradana",
+      ewallet: "Gopay • 0812-1234-5678",
+      colors: { primary: "#d6b482", accent: "#6b705c" },
+      fonts: { heading: "'Playfair Display', serif", body: "'Poppins', sans-serif" }
+    };
+
+    let state = { ...defaults };
+    let rsvpData = [];
+
+    const el = (id) => document.getElementById(id);
+
+    function applyTheme() {
+      document.documentElement.style.setProperty("--primary", state.colors.primary);
+      document.documentElement.style.setProperty("--accent", state.colors.accent);
+      document.documentElement.style.setProperty("--font-heading", state.fonts.heading);
+      document.documentElement.style.setProperty("--font-body", state.fonts.body);
+    }
+
+    function renderData() {
+      el("coupleName").textContent = `${state.groom} & ${state.bride}`;
+      el("groomName").textContent = state.groom;
+      el("brideName").textContent = state.bride;
+      el("weddingDateText").textContent = formatDateReadable(state.weddingDate);
+      el("heroQuote").textContent = state.quote;
+      el("heroPhoto").src = state.heroPhoto;
+      el("groomPhoto").src = state.groomPhoto;
+      el("bridePhoto").src = state.bridePhoto;
+      el("akadDate").textContent = state.akad.date;
+      el("akadTime").textContent = `Pukul ${state.akad.time}`;
+      el("akadLocation").textContent = state.akad.location;
+      el("resepsiDate").textContent = state.resepsi.date;
+      el("resepsiTime").textContent = `Pukul ${state.resepsi.time}`;
+      el("resepsiLocation").textContent = state.resepsi.location;
+      el("bankInfo").textContent = state.bank;
+      el("ewalletInfo").textContent = state.ewallet;
+      el("footerNames").textContent = `${state.groom} & ${state.bride}`;
+      el("footerYear").textContent = new Date().getFullYear();
+      renderGallery();
+      renderTimeline();
+      applyTheme();
+    }
+
+    function renderGallery() {
+      const wrap = el("galleryGrid");
+      wrap.innerHTML = "";
+      state.gallery.slice(0,12).forEach((src) => {
+        const img = document.createElement("img");
+        img.loading = "lazy";
+        img.src = src.trim();
+        img.alt = "Galeri pernikahan";
+        wrap.appendChild(img);
+      });
+    }
+
+    function renderTimeline() {
+      const wrap = el("storyTimeline");
+      wrap.innerHTML = "";
+      state.timeline.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "timeline-item";
+        div.innerHTML = `<strong>${item.title}</strong><p style="margin:4px 0 0; color:#555;">${item.desc}</p>`;
+        wrap.appendChild(div);
+      });
+    }
+
+    function formatDateReadable(value) {
+      const d = new Date(value);
+      if (isNaN(d)) return value;
+      return d.toLocaleDateString("id-ID", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    }
+
+    function startCountdown() {
+      const target = new Date(state.weddingDate).getTime();
+      const timer = setInterval(() => {
+        const now = Date.now();
+        let diff = target - now;
+        if (diff <= 0) {
+          diff = 0;
+          clearInterval(timer);
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        el("days").textContent = days;
+        el("hours").textContent = hours;
+        el("minutes").textContent = minutes;
+        el("seconds").textContent = seconds;
+      }, 1000);
+    }
+
+    function handleRSVP(evt) {
+      evt.preventDefault();
+      const name = el("inputName").value.trim();
+      const attend = el("inputAttend").value;
+      const guests = Number(el("inputGuests").value || 0);
+      const message = el("inputMessage").value.trim();
+      if (!name || !attend || guests < 1) {
+        alert("Lengkapi data dan minimal 1 tamu.");
+        return;
+      }
+      const entry = { name, attend, guests, message, time: new Date().toLocaleString("id-ID") };
+      rsvpData.unshift(entry);
+      renderRSVP();
+      saveLocal();
+      el("rsvpForm").reset();
+      el("inputGuests").value = 1;
+      sendToGoogleSheet(entry);
+    }
+
+    function renderRSVP() {
+      const list = el("rsvpList");
+      list.innerHTML = "";
+      rsvpData.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "rsvp-item";
+        div.innerHTML = `<strong>${item.name}</strong> • ${item.attend} • ${item.guests} orang <p style="margin:4px 0; color:#555;">${item.message || "—"}</p><small style="color:#777;">${item.time}</small>`;
+        list.appendChild(div);
+      });
+      el("messageList").innerHTML = list.innerHTML;
+    }
+
+    function saveLocal() {
+      localStorage.setItem("rsvpData", JSON.stringify(rsvpData));
+    }
+    function loadLocal() {
+      const stored = localStorage.getItem("rsvpData");
+      if (stored) { rsvpData = JSON.parse(stored); renderRSVP(); }
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => alert("Disalin"));
+    }
+
+    let musicEnabled = false;
+    let userInteracted = false;
+
+    function toggleMusic() {
+      const audio = el("bgMusic");
+      const icon = el("musicIcon");
+      const text = el("musicText");
+      
+      if (!userInteracted) {
+        userInteracted = true;
+        // Set volume untuk pengalaman yang lebih baik
+        audio.volume = 0.3;
+      }
+      
+      if (audio.paused) {
+        audio.play().then(() => {
+          musicEnabled = true;
+          icon.textContent = "🔊";
+          text.textContent = "Musik On";
+          el("btnMusic").style.opacity = "1";
+        }).catch(err => {
+          console.warn("Audio play failed:", err);
+          icon.textContent = "🔇";
+          text.textContent = "Klik untuk putar";
+        });
+      } else {
+        audio.pause();
+        musicEnabled = false;
+        icon.textContent = "🔇";
+        text.textContent = "Musik Off";
+      }
+    }
+
+    // Auto-play musik setelah user pertama kali berinteraksi dengan halaman
+    function enableMusicOnInteraction() {
+      if (!userInteracted) {
+        const audio = el("bgMusic");
+        audio.volume = 0.3;
+        audio.play().then(() => {
+          musicEnabled = true;
+          el("musicIcon").textContent = "🔊";
+          el("musicText").textContent = "Musik On";
+          userInteracted = true;
+        }).catch(() => {
+          // Browser memblokir autoplay, tunggu user klik
+          el("musicIcon").textContent = "🔇";
+          el("musicText").textContent = "Putar Musik";
+        });
+      }
+    }
+
+    function openMaps(url) {
+      if (!url) return;
+      window.open(url, "_blank");
+    }
+
+    function updateStateFromForm() {
+      state = {
+        ...state,
+        groom: el("formGroom").value || defaults.groom,
+        bride: el("formBride").value || defaults.bride,
+        weddingDate: el("formDate").value || defaults.weddingDate,
+        heroPhoto: el("formHeroPhoto").value || defaults.heroPhoto,
+        quote: el("formQuote").value || defaults.quote,
+        akad: {
+          date: el("formAkadDate").value || defaults.akad.date,
+          time: el("formAkadTime").value || defaults.akad.time,
+          location: el("formAkadLocation").value || defaults.akad.location,
+          map: el("formAkadMap").value || defaults.akad.map,
+        },
+        resepsi: {
+          date: el("formResepsiDate").value || defaults.resepsi.date,
+          time: el("formResepsiTime").value || defaults.resepsi.time,
+          location: el("formResepsiLocation").value || defaults.resepsi.location,
+          map: el("formResepsiMap").value || defaults.resepsi.map,
+        },
+        gallery: parseGallery(el("formGallery").value),
+        timeline: parseTimeline(el("formTimeline").value),
+        bank: el("formBank").value || defaults.bank,
+        ewallet: el("formEwallet").value || defaults.ewallet,
+        colors: {
+          primary: el("formPrimary").value || defaults.colors.primary,
+          accent: el("formAccent").value || defaults.colors.accent,
+        },
+        fonts: {
+          heading: el("formFontHeading").value || defaults.fonts.heading,
+          body: el("formFontBody").value || defaults.fonts.body,
+        }
+      };
+    }
+
+    function parseGallery(text) {
+      if (!text) return defaults.gallery;
+      return text.split(",").map(x => x.trim()).filter(Boolean).slice(0,12);
+    }
+
+    function parseTimeline(text) {
+      if (!text) return defaults.timeline;
+      return text.split("\n").map(row => {
+        const [title, desc] = row.split("|");
+        return { title: title?.trim() || "", desc: desc?.trim() || "" };
+      }).filter(x => x.title);
+    }
+
+    function populateForm() {
+      el("formGroom").value = state.groom;
+      el("formBride").value = state.bride;
+      el("formDate").value = state.weddingDate;
+      el("formHeroPhoto").value = state.heroPhoto;
+      el("formQuote").value = state.quote;
+      el("formAkadDate").value = state.akad.date;
+      el("formAkadTime").value = state.akad.time;
+      el("formAkadLocation").value = state.akad.location;
+      el("formAkadMap").value = state.akad.map;
+      el("formResepsiDate").value = state.resepsi.date;
+      el("formResepsiTime").value = state.resepsi.time;
+      el("formResepsiLocation").value = state.resepsi.location;
+      el("formResepsiMap").value = state.resepsi.map;
+      el("formGallery").value = state.gallery.join(", ");
+      el("formTimeline").value = state.timeline.map(i => `${i.title}|${i.desc}`).join("\n");
+      el("formBank").value = state.bank;
+      el("formEwallet").value = state.ewallet;
+      el("formPrimary").value = state.colors.primary;
+      el("formAccent").value = state.colors.accent;
+      el("formFontHeading").value = state.fonts.heading;
+      el("formFontBody").value = state.fonts.body;
+    }
+
+    function encodeData() {
+      const payload = btoa(unescape(encodeURIComponent(JSON.stringify(state))));
+      const url = `${location.origin}${location.pathname}?data=${payload}`;
+      el("formGeneratedLink").value = url;
+    }
+
+    function decodeDataFromURL() {
+      const params = new URLSearchParams(location.search);
+      if (params.has("data")) {
+        try {
+          const decoded = JSON.parse(decodeURIComponent(escape(atob(params.get("data")))));
+          state = { ...defaults, ...decoded };
+        } catch (err) {
+          console.warn("Gagal decode data", err);
+        }
+      }
+    }
+
+    function sendToGoogleSheet(entry) {
+      if (!GOOGLE_SCRIPT_URL) return;
+      fetch(GOOGLE_SCRIPT_URL, { method: "POST", body: JSON.stringify(entry) }).catch(() => {});
+    }
+
+    function setupAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add("show");
+        });
+      }, { threshold: 0.2 });
+      document.querySelectorAll(".anim").forEach(el => observer.observe(el));
+    }
+
+    document.getElementById("rsvpForm").addEventListener("submit", handleRSVP);
+    el("copyBank").addEventListener("click", () => copyText(state.bank));
+    el("copyEwallet").addEventListener("click", () => copyText(state.ewallet));
+    el("btnMusic").addEventListener("click", toggleMusic);
+    el("akadMapBtn").addEventListener("click", () => openMaps(state.akad.map));
+    el("resepsiMapBtn").addEventListener("click", () => openMaps(state.resepsi.map));
+    
+    // Auto-play musik saat user pertama kali berinteraksi
+    document.addEventListener("click", enableMusicOnInteraction, { once: true });
+    document.addEventListener("touchstart", enableMusicOnInteraction, { once: true });
+    document.addEventListener("scroll", enableMusicOnInteraction, { once: true });
+    
+    // Tombol "Buka Undangan" juga trigger musik
+    document.querySelector('a[href="#detail"]')?.addEventListener("click", enableMusicOnInteraction);
+
+    el("togglePanel").addEventListener("click", () => {
+      const panel = el("generatorPanel");
+      const isVisible = panel.style.display !== "none";
+      panel.style.display = isVisible ? "none" : "block";
+      if (!isVisible) populateForm();
+    });
+    el("openGenerator").addEventListener("click", () => {
+      el("generatorPanel").style.display = "block";
+      populateForm();
+      enableMusicOnInteraction();
+    });
+    el("closeGenerator").addEventListener("click", () => {
+      el("generatorPanel").style.display = "none";
+    });
+
+    el("btnPreview").addEventListener("click", () => {
+      updateStateFromForm();
+      renderData();
+    });
+    el("btnGenerate").addEventListener("click", () => {
+      updateStateFromForm();
+      renderData();
+      encodeData();
+    });
+    el("btnCopyLink").addEventListener("click", () => copyText(el("formGeneratedLink").value));
+
+    // Handle audio errors
+    el("bgMusic").addEventListener("error", function() {
+      console.warn("Audio source failed, trying fallback");
+      // Fallback audio akan otomatis digunakan jika source pertama gagal
+    });
+    
+    el("bgMusic").addEventListener("loadeddata", function() {
+      // Audio siap diputar
+      if (musicEnabled && userInteracted) {
+        this.play().catch(() => {
+          el("musicIcon").textContent = "🔇";
+          el("musicText").textContent = "Putar Musik";
+        });
+      }
+    });
+
+    function init() {
+      decodeDataFromURL();
+      renderData();
+      populateForm();
+      startCountdown();
+      loadLocal();
+      setupAnimations();
+      
+      // Set initial music button state
+      el("musicIcon").textContent = "🔇";
+      el("musicText").textContent = "Putar Musik";
+    }
+    init();
+  </script>
+</body>
+</html>
+
